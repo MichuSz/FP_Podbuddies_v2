@@ -13,7 +13,52 @@
     </facet>
   </component>
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_internal/cli" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_internal/commands" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_internal/distributions" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_internal/index" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_internal/locations" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_internal/metadata" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_internal/models" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_internal/network" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_internal/operations" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_internal/req" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_internal/resolution" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_internal/utils" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_internal/vcs" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/cachecontrol" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/certifi" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/chardet" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/colorama" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/distlib" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/html5lib" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/idna" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/msgpack" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/packaging" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/pep517" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/pkg_resources" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/platformdirs" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/progress" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/requests" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/resolvelib" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/tenacity" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/tomli" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/urllib3" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pip/_vendor/webencodings" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pkg_resources/_vendor" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pkg_resources/extern" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/pkg_resources/tests" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/setuptools/_distutils" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/setuptools/_vendor" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/setuptools/command" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/setuptools/extern" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/sqlparse/engine" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/sqlparse/filters" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/wheel/cli" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib/python3.8/site-packages/wheel/vendored" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
