@@ -17,7 +17,6 @@ class HomeView(ListView):
     model = Product
     template_name = "home.html"
 
-
 class ProductView(DetailView):
     model = Product
     template_name = "product.html"

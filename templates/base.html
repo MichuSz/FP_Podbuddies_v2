@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Djanggo Ecommerce</title>
+  <title>PODBuddies</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -53,9 +53,9 @@
   <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
     <div class="container">
 
-      <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-        <strong class="blue-text">MDB</strong>
+      <!-- Brand --> </li class="nav-item">
+      <a class="nav-link waves-effect" href={% url 'store:home' %}>
+        <strong class="blue-text">PODBUDDIES</strong>
       </a>
 
       <!-- Collapse -->
@@ -80,8 +80,8 @@
 
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link waves-effect">
-                <span class="badge red z-depth-1 mr-1"> 1 </span>
+                <a class="nav-link waves-effect" href="{% url 'store:order-summary' %}">
+                <span class="badge red z-depth-1 mr-1">{{ request.user|cart_product_count }}</span>
                 <i class="fas fa-shopping-cart"></i>
                 <span class="clearfix d-none d-sm-inline-block"> Cart </span>
                 </a>
@@ -92,11 +92,14 @@
                 </a>
             </li>
              </li class="nav-item">
-                <a class="nav-link waves-effect" href="{% url 'logout' %}"> logout</a>
+                <a class="nav-link waves-effect" href="{% url 'account_logout' %}"> logout</a>
             </li>
             {% else %}
              </li class="nav-item">
-                <a class="nav-link waves-effect" href="{% url 'login' %}"> login</a>
+                <a class="nav-link waves-effect" href="{% url 'account_signup' %}"> sign up</a>
+            </li>
+             </li class="nav-item">
+                <a class="nav-link waves-effect" href="{% url 'account_login' %}"> login</a>
             </li>
             {% endif %}
         </ul>

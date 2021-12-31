@@ -12,7 +12,14 @@ CATEGORY = (
 
 LABEL = (
     ('N', 'New'),
-    ('BS', 'Best Seller')
+    ('BS', 'Best Seller'),
+    ('A','Animals'),
+    ('F','Furry'),
+    ('Fr','Fruits'),
+    ('L','Leather'),
+    ('C','Colors'),
+    ('X','Xtra')
+
 )
 
 
@@ -23,6 +30,7 @@ class Product(models.Model):
     category = models.CharField(choices=CATEGORY, max_length=4)
     label = models.CharField(choices=LABEL, max_length=2)
     description = models.TextField()
+    img = models.ImageField(upload_to='images',null=True)
 
     def __str__(self):
         return self.product_name
