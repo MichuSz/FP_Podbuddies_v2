@@ -2,20 +2,25 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, View
 from django.contrib import messages
 from django.utils import timezone
-from .models import Product, Order, OrderProduct, CheckoutAddress, Payment
+from .models import Product, Order, OrderProduct, CheckoutAddress, Payment, CATEGORY, LABEL
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
 from .forms import CheckoutForm
 from django.conf import settings
 
+
 import stripe
 stripe.api_key = settings.STRIPE_KEY
 
+category = CATEGORY
+label = LABEL
 
 class HomeView(ListView):
     model = Product
     template_name = "home.html"
+    category = CATEGORY
+    label = LABEL
 
 class ProductView(DetailView):
     model = Product
@@ -83,7 +88,7 @@ class PaymentView(View):
 
     def post(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
-        token = self.request.POST.get('stripeToken')
+        #token = self.request.POST.get('stripeToken')
         amount = int(order.get_total_price())
 
         try:
@@ -145,6 +150,8 @@ class PaymentView(View):
             # Something else happened, completely unrelated to Stripe
             messages.error(self.request, "Not identified error")
             return redirect('/')
+
+
 
 
 

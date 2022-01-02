@@ -7,7 +7,7 @@ CATEGORY = (
     ('AP12', 'Apple AirPods 1&2'),
     ('AP3', 'Apple AirPod Pro'),
     ('AD12', 'Xiaomi AirDots 1&2'),
-    ('AD3', 'Xiaomi AirDots 3'),
+    ('AD3', 'Xiaomi AirDots 3')
 )
 
 LABEL = (
