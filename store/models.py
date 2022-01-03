@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.shortcuts import reverse
+from django.urls import reverse_lazy
 from django_countries.fields import CountryField
 
 CATEGORY = (
@@ -13,12 +14,12 @@ CATEGORY = (
 LABEL = (
     ('N', 'New'),
     ('BS', 'Best Seller'),
-    ('A','Animals'),
-    ('F','Furry'),
-    ('Fr','Fruits'),
-    ('L','Leather'),
-    ('C','Colors'),
-    ('X','Xtra')
+    ('A', 'Animals'),
+    ('F', 'Furry'),
+    ('Fr', 'Fruits'),
+    ('L', 'Leather'),
+    ('C', 'Colors'),
+    ('X', 'Xtra')
 
 )
 

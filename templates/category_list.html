@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+     <div id="sidebar">
+        <h3>Categories</h3>
+        <ul>
+             <li {% if not category %}class="selected"{% endif %}>
+             <a href="{% url "store:category-list" %}">All</a>
+             </li>
+                 {% for c in category %}
+                 <li {% if category.0 == c.0 %}class="selected" {% endif %}>
+                 <a href="{{ c.get_absolute_url }}">{{ c.1 }}</a>
+                 </li>
+                 {% endfor %}
+        </ul>
+    </div>
+ <div id="main" class="product-list">
+     <h1>{% if category %}{{ category.1.1 }}ASS{% else %}Products
+     {% endif %}</h1>
+     {% for product in categories %}
+ <div class="item">
+    <a href="{{ product.product_name }}">
+    <img src="{% if product.image %}{{ product.image.url }}{%else %} static {% endif %}">
+ </a>
+ <a href="{{ product.get_absolute_url }}">{{ product.product_name }}</a>
+ <br>
+ ${{ product.price }}
+ </div>
+{% endfor %}
+ </div>
+<!--Main layout-->
+  <main class="mt-5 pt-4">
+      {% if category %}{% for c in category %}{{ c.1 }}</br> {% endfor %}{% endif %}
+  </main>
+  <!--Main layout-->
+    <main class="mt-5 pt-4">
+      {% if label %}{% for l in label %}{{ l.1 }}</br> {% endfor %}{% endif %}
+  </main>
+
+
+
+
+{% endblock content %}

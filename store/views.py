@@ -16,11 +16,11 @@ stripe.api_key = settings.STRIPE_KEY
 category = CATEGORY
 label = LABEL
 
+
 class HomeView(ListView):
     model = Product
     template_name = "home.html"
-    category = CATEGORY
-    label = LABEL
+
 
 class ProductView(DetailView):
     model = Product
@@ -220,5 +220,11 @@ def reduce_quantity_product(request,pk):
     else:
         messages.info(request, "You need an Order to do that.")
         return redirect("store:order-summary")
+
+
+def category_list(request):
+    categories = Product.objects.all()
+    return render(request,'category_list.html',{'category':category,'label':label,'categories':categories})
+
 
 
