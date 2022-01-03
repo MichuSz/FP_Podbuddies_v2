@@ -25,10 +25,10 @@
             <td>{{ order_product.product.product_name }}</td>
             <td>
             {% if order_product.product.discount_price %}
-                <del>${{ order_product.product.price}}</del>
-                ${{ order_product.product.discount_price }}
+                <del>PLN{{ order_product.product.price}}</del>
+                PLN{{ order_product.product.discount_price }}
             {% else %}
-                ${{ order_product.product.price}}
+                PLN{{ order_product.product.price}}
             {% endif %}
 
             </td>
@@ -39,10 +39,10 @@
             </td>
             <td>
             {% if order_product.product.discount_price %}
-                ${{ order_product.get_discount_product_price }}
-                <span class="badge badge-success" >Saved ${{ order_product.get_amount_saved }}</span>
+                PLN{{ order_product.get_discount_product_price }}
+                <span class="badge badge-success" >Saved PLN{{ order_product.get_amount_saved }}</span>
             {% else %}
-                ${{ order_product.get_total_product_price}}
+                PLN{{ order_product.get_total_product_price}}
             {% endif %}
              <a href="{% url 'store:remove-from-cart' order_product.product.pk %}">
                 <i class="fas fa-trash float-right text-danger"></i>
@@ -67,7 +67,7 @@
         {% if object.get_total_price %}
         <tr>
             <td colspan="4"><b>Total Order Price</b></td>
-            <td>${{ object.get_total_price }}</td>
+            <td>PLN{{ object.get_total_price }}</td>
         </tr>
          <tr>
             <td colspan="5">

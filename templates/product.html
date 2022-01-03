@@ -36,11 +36,11 @@
 
             {% if object.discount_price %}
               <span class="mr-1">
-              <del>${{ object.price }}</del>
+              <del >PLN{{ object.price }}</del>
               </span>
-              <span>${{ object.discount_price }}</span>
+              <span>PLN{{ object.discount_price }}</span>
             {% else %}
-             <span>${{ product.price }}</span>
+             <span>PLN{{ product.price }}</span>
             {% endif %}
 
             </p>

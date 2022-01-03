@@ -208,7 +208,9 @@
                 <h4 class="font-weight-bold blue-text">
                   <strong>PLN
                   {% if product.discount_price %}
-                  {{ product.discount_price }}
+
+                   <del class="font-small">   {{ product.price }} </del>
+                  <span class="text-danger">{{ product.discount_price }}</span>
                   {% else %}
                   {{ product.price }}
                   {% endif %}
