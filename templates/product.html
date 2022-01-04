@@ -25,10 +25,12 @@
 
             <div class="mb-3">
               <a href="">
-                <span class="badge purple mr-1">{{ object.get_category_display }}</span>
+                <span class="badge purple mr-1">{{ object.device }}</span>
+              </a><a href="">
+                <span class="badge green mr-1">{{ object.theme }}</span>
               </a>
               <a href="">
-                <span class="badge blue mr-1">{{ object.get_label_display }}</span>
+                <span class="badge danger-color mr-1">{% if product.get_label_display %}{{ product.get_label_display }}{% endif %}</span>
               </a>
             </div>
 
