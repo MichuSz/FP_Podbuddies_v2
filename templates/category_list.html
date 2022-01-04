@@ -2,41 +2,124 @@
 
 {% block content %}
 
-     <div id="sidebar">
-        <h3>Categories</h3>
-        <ul>
-             <li {% if not category %}class="selected"{% endif %}>
-             <a href="{% url "store:category-list" %}">All</a>
-             </li>
-                 {% for c in category %}
-                 <li {% if category.0 == c.0 %}class="selected" {% endif %}>
-                 <a href="{{ c.get_absolute_url }}">{{ c.1 }}</a>
-                 </li>
-                 {% endfor %}
-        </ul>
+<main>
+    <div class="container">
+
+      <!--NavbarORI-->
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+
+        <!-- Navbar brand -->
+        <span class="navbar-brand">Select device:</span>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+          <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item">
+              <a class="nav-link"  href="1">Apple AirPods 1&2</a>
+
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="2">Apple AirPods Pro</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="3">Xiaomi AirDots 1&2</a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="4">Xiaomi AirDots 3</a>
+            </li>
+
+          </ul>
+          <!-- Links -->
+
+          <form class="form-inline">
+            <div class="md-form my-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            </div>
+          </form>
+        </div>
+        <!-- Collapsible content -->
+
+ </nav>
+
+
+    <!--Section: Products v.3-->
+      <section class="text-center mb-4">
+
+        <!--Grid row-->
+        <div class="row wow fadeIn">
+          {% for product in products %}
+
+
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4">
+
+            <!--Card-->
+            <div class="card">
+
+              <!--Card image-->
+              <div class="view overlay">
+
+                <img src="{{ MEDIA_URL }}{{ product.img }}"class="card-img-top" alt="">
+                <a href="{{ product.get_absolute_url }}">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--Card image-->
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <a href="" class="grey-text">
+                  <h5>{{ product.device}}</h5>
+                </a>
+                <h5>
+                  <strong>
+                    <a href="{{ product.get_absolute_url }}" class="dark-grey-text">{{ product.product_name }}
+                      <span class="badge badge-pill {% if product.get_label_display == 'New' %} danger-color {% elif product.get_label_display == 'Best Seller' %} purple {% endif %}">{% if product.get_label_display %}{{ product.get_label_display }}{% endif %}</span>
+                    <span class="badge badge-pill green" >{{ product.theme }}</span>
+                    </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong>PLN
+                  {% if product.discount_price %}
+
+                   <del class="font-small">   {{ product.price }} </del>
+                  <span class="text-danger">{{ product.discount_price }}</span>
+                  {% else %}
+                  {{ product.price }}
+                  {% endif %}
+                  </strong>
+                </h4>
+              </div>
+              <!--Card content-->
+            </div>
+            <!--Card-->
+          </div>
+          <!--Grid column-->
+
+          {% endfor %}
+        </div>
+
+      </section>
+      <!--Section: Products v.3-->
+
+
+
+
     </div>
- <div id="main" class="product-list">
-     <h1>{% if category %}{{ category.1.1 }}ASS{% else %}Products
-     {% endif %}</h1>
-     {% for product in categories %}
- <div class="item">
-    <a href="{{ product.product_name }}">
-    <img src="{% if product.image %}{{ product.image.url }}{%else %} static {% endif %}">
- </a>
- <a href="{{ product.get_absolute_url }}">{{ product.product_name }}</a>
- <br>
- ${{ product.price }}
- </div>
-{% endfor %}
- </div>
-<!--Main layout-->
-  <main class="mt-5 pt-4">
-      {% if category %}{% for c in category %}{{ c.1 }}</br> {% endfor %}{% endif %}
   </main>
-  <!--Main layout-->
-    <main class="mt-5 pt-4">
-      {% if label %}{% for l in label %}{{ l.1 }}</br> {% endfor %}{% endif %}
-  </main>
+
 
 
 

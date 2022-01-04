@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, View
 from django.contrib import messages
 from django.utils import timezone
-from .models import Product, Order, OrderProduct, CheckoutAddress, Payment, CATEGORY, LABEL
+from .models import Product, Order, OrderProduct, CheckoutAddress, Payment, CATEGORY, LABEL, Device
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
@@ -222,9 +222,10 @@ def reduce_quantity_product(request,pk):
         return redirect("store:order-summary")
 
 
-def category_list(request):
-    categories = Product.objects.all()
-    return render(request,'category_list.html',{'category':category,'label':label,'categories':categories})
+def category_list(request,id):
+    devices = Device.objects.all()
+    products = Product.objects.filter(device=id)
+    return render(request,'category_list.html',{'devices':devices,'products':products})
 
 
 

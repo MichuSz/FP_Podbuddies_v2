@@ -13,23 +13,29 @@ CATEGORY = (
 
 LABEL = (
     ('N', 'New'),
-    ('BS', 'Best Seller'),
-    ('A', 'Animals'),
-    ('F', 'Furry'),
-    ('Fr', 'Fruits'),
-    ('L', 'Leather'),
-    ('C', 'Colors'),
-    ('X', 'Xtra')
+    ('BS', 'Best Seller')
 
 )
+class Device(models.Model):
+    device = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.device
+
+class Theme(models.Model):
+    theme = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.theme
 
 class Product(models.Model):
+    device = models.ForeignKey(Device,related_name='products', on_delete=models.CASCADE)
+    theme = models.ForeignKey(Theme,related_name='products',on_delete=models.CASCADE,null=True)
     product_name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     discount_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2)
-    category = models.CharField(choices=CATEGORY, max_length=4)
-    label = models.CharField(choices=LABEL, max_length=2)
+    category = models.CharField(choices=CATEGORY, max_length=4,null=True,blank=True)
+    label = models.CharField(choices=LABEL, max_length=2,null=True,blank=True)
     description = models.TextField()
     img = models.ImageField(upload_to='images',null=True)
 

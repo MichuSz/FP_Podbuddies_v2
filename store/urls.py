@@ -15,7 +15,8 @@ urlpatterns = [
     path('reduce-quantity-product/<pk>', reduce_quantity_product, name='reduce-quantity-product'),
     path('checkout/',CheckoutView.as_view(),name='checkout'),
     path('payment/<payment_option>/',PaymentView.as_view(),name='payment'),
-    path('category-list/', views.category_list,name='category-list')
+    path('category-list/', views.category_list,name='category-list'),
+    path('category-list/<int:id>', views.category_list,name='category-list')
     # path('category/<pk>',DeviceView.as_view(),name='device-type')
 ]
 
