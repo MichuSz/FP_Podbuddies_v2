@@ -21,7 +21,7 @@
     body,
     header,
     .carousel {
-      height: 60vh;
+      height: 40vh;
     }
 
     @media (max-width: 740px) {
@@ -46,24 +46,51 @@
 
   </style>
 </head>
-<body class="rgba-teal-light">
+<body style="background-image: url({% static 'img/background1.jpg'%}); " >
 <br>
 
   <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light rgba-teal-strong scrolling-navbar " >
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar " style="background-color: #7a8590" >
     <div class="container">
 
       <!-- Brand --> </li class="nav-item">
-      <a class="nav-link waves-effect" href={% url 'store:home' %}>
+      <a class="nav-link waves-effect btn" href={% url 'store:home' %}>
         <strong class="black-text">Home</strong>
       </a>
-        <a class="nav-link waves-effect" href=category-list/1>
-        <strong class="black-text">Category List</strong>
-      </a>
+                <!-- Split Devices -->
+<div class="btn-group">
+    <a href="{% url 'store:category-list' 0%}" class="btn" ><strong class="black-text">PODs by Devices</strong></a>
+  <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+    {% for dev in devices %}
+            <li>
+              <a class="dropdown-item" href="{%url 'store:category-list' dev.id %}">{{ dev }}</a>
+            </li>
+                {% endfor %}
+  </ul>
+</div>
+                    <!-- Split Devices -->
+<div class="btn-group">
+    <a href="{% url 'store:theme-list' 0%}" class="btn dropdown-toggle" ><strong class="black-text">PODs by Themes</strong></a>
+  <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+    {% for theme in themes %}
+            <li>
+              <a class="dropdown-item" href="{%url 'store:theme-list' theme.id %}">{{ theme }}</a>
+            </li>
+                {% endfor %}
+  </ul>
+</div>
       <!-- Collapse -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon">A</span>
       </button>
 
       <!-- Links -->
@@ -111,6 +138,7 @@
     </div>
   </nav>
   <!-- Navbar -->
+</br>
 </br>
 </br>
     {% block content %}

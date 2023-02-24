@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, View
 from django.contrib import messages
 from django.utils import timezone
-from .models import Product, Order, OrderProduct, CheckoutAddress, Payment, CATEGORY, LABEL, Device
+from .models import Product, Order, OrderProduct, CheckoutAddress, Payment, LABEL, Device, Theme
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
@@ -13,14 +13,13 @@ from django.conf import settings
 import stripe
 stripe.api_key = settings.STRIPE_KEY
 
-category = CATEGORY
 label = LABEL
 
 
 class HomeView(ListView):
     model = Product
     template_name = "home.html"
-
+    paginate_by =15
 
 class ProductView(DetailView):
     model = Product
@@ -32,7 +31,7 @@ class OrderSummaryView(LoginRequiredMixin,View):
 
         try:
             order = Order.objects.get(user=self.request.user, ordered=False)
-            return render(self.request, 'order_summary.html', { 'object' : order })
+            return render(self.request, 'order_summary.html', {'object' : order })
         except ObjectDoesNotExist:
             messages.error(self.request, "You dont have an order.")
             return redirect("/")
@@ -42,7 +41,7 @@ class CheckoutView(View):
     def get(self, *args, **kwargs):
         form = CheckoutForm()
         order = Order.objects.get(user=self.request.user,ordered=False)
-        return render(self.request, 'checkout.html',{'form':form,'order':order})
+        return render(self.request, 'checkout.html', {'form':form,'order':order})
 
     def post(self,*args,**kwargs):
         form = CheckoutForm(self.request.POST or None)
@@ -54,8 +53,6 @@ class CheckoutView(View):
                 apartment_address = form.cleaned_data.get('apartment_address')
                 country = form.cleaned_data.get('country')
                 zip = form.cleaned_data.get('zip')
-                same_billing_adress = form.cleaned_data.get('same_billing_adress')
-                save_info = form.cleaned_data.get('save_info')
                 payment_option = form.cleaned_data.get('payment_option')
 
                 checkout_adress = CheckoutAddress(
@@ -82,9 +79,9 @@ class CheckoutView(View):
             return redirect('store:order-summary')
 
 class PaymentView(View):
-    def get(self,*args,**kwargs):
+    def get(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
-        return render(self.request,"payment.html", {'order':order})
+        return render(self.request, "payment.html", {'order': order})
 
     def post(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
@@ -222,10 +219,18 @@ def reduce_quantity_product(request,pk):
         return redirect("store:order-summary")
 
 
-def category_list(request,id):
-    devices = Device.objects.all()
+def category_list(request,id=Device.pk):
+    devices = Device.objects.all().order_by('id')
     products = Product.objects.filter(device=id)
-    return render(request,'category_list.html',{'devices':devices,'products':products})
+    themes = Theme.objects.all().order_by('id')
+    return render(request,'category_list.html',{'devices':devices,'products':products,'themes':themes})
+
+
+def theme_list(request,id=Theme.pk):
+    themes = Theme.objects.all().order_by('id')
+    devices = Device.objects.all().order_by('id')
+    products = Product.objects.filter(theme=id)
+    return render(request,'theme_list.html',{'themes':themes,'products':products,'devices':devices})
 
 
 

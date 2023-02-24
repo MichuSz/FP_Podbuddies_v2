@@ -3,7 +3,7 @@
 {% block content %}
 
 <main>
-    <div class="container">
+   <div class="container">
 
       <!--NavbarORI-->
 
@@ -13,7 +13,20 @@
         <!-- Collapsible content -->
         <div class="collapse flex-column navbar-collapse" id="basicExampleNav" >
 
-          <!-- Links -->
+        <!-- Themes Buttons-->
+          <ul class="navbar-nav mr-auto">
+                {% for theme in themes %}
+            <li class="nav-item ">
+              <a class="btn btn-deep-orange active btn-outline-elegant" role="button" aria-pressed="true"  href="{%url 'store:theme-list' theme.id %}">{{ theme }}</a>
+            </li>
+                {% endfor %}
+
+          </ul>
+        </div>
+
+    <div class="collapse flex-column navbar-collapse" id="basicExampleNav" >
+
+          <!-- Devices -->
           <ul class="navbar-nav mr-auto">
                 {% for dev in devices %}
             <li class="nav-item ">
@@ -21,25 +34,6 @@
             </li>
                 {% endfor %}
           </ul>
-
-          <!-- Links -->
-
-{#          <form class="form-inline">#}
-{#            <div class="md-form my-0">#}
-{#              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">#}
-{#            </div>#}
-{#          </form>#}
-{#        </div>#}
-{#        <!-- Collapsible content -->#}
-    <div class="collapse flex-column navbar-collapse" id="basicExampleNav" >
-
-          <!-- Links -->
-                    <ul class="navbar-nav mr-auto">
-                {% for theme in themes %}
-            <li class="nav-item ">
-              <a class="btn btn-deep-orange active btn-outline-elegant" role="button" aria-pressed="true"  href="{%url 'store:theme-list' theme.id %}">{{ theme }}</a>
-            </li>
-                {% endfor %}
 
 
 
@@ -50,22 +44,17 @@
 
 
 
-      <nav class="navbar navbar-expand-lg navbar-dark mdb-color rgba-teal-slight mt-3 mb-5">
+     <nav class="navbar navbar-expand-lg navbar-dark mdb-color rgba-teal-slight mt-3 mb-5">
 
         <!-- Navbar brand -->
-        <span class="navbar-brand">{{ products.0.device }}</span>
+        <span class="navbar-brand">{{ products.0.theme }}</span>
      </nav>
-
-
-
-
-
     <!--Section: Products v.3-->
       <section class="text-center mb-4">
 
         <!--Grid row-->
         <div class="row wow fadeIn">
-            {% for product in products %}
+            {%  for product in products %}
 
 
 
@@ -76,7 +65,6 @@
             <div class="card h-100">
 
               <!--Card image-->
-
               <div class="view overlay">
 
                 <img src="{{ MEDIA_URL }}{{ product.img }}"class="card-img-top" alt="">
@@ -114,7 +102,6 @@
               </div>
               <!--Card content-->
             </div>
-
             <!--Card-->
           </div>
           <!--Grid column-->
@@ -123,11 +110,6 @@
 
       </section>
       <!--Section: Products v.3-->
-
-
-
-
-
 
 
 

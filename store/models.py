@@ -1,26 +1,22 @@
 from django.db import models
 from django.conf import settings
 from django.shortcuts import reverse
-from django.urls import reverse_lazy
 from django_countries.fields import CountryField
 
-CATEGORY = (
-    ('AP12', 'Apple AirPods 1&2'),
-    ('AP3', 'Apple AirPod Pro'),
-    ('AD12', 'Xiaomi AirDots 1&2'),
-    ('AD3', 'Xiaomi AirDots 3')
-)
 
 LABEL = (
     ('N', 'New'),
     ('BS', 'Best Seller')
 
 )
+
+
 class Device(models.Model):
     device = models.CharField(max_length=100)
 
     def __str__(self):
         return self.device
+
 
 class Theme(models.Model):
     theme = models.CharField(max_length=100)
@@ -28,16 +24,16 @@ class Theme(models.Model):
     def __str__(self):
         return self.theme
 
+
 class Product(models.Model):
-    device = models.ForeignKey(Device,related_name='products', on_delete=models.CASCADE)
-    theme = models.ForeignKey(Theme,related_name='products',on_delete=models.CASCADE,null=True)
+    device = models.ForeignKey(Device, related_name='products', on_delete=models.CASCADE)
+    theme = models.ForeignKey(Theme, related_name='products', on_delete=models.CASCADE,null=True)
     product_name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     discount_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2)
-    category = models.CharField(choices=CATEGORY, max_length=4,null=True,blank=True)
-    label = models.CharField(choices=LABEL, max_length=2,null=True,blank=True)
+    label = models.CharField(choices=LABEL, max_length=2, null=True, blank=True)
     description = models.TextField()
-    img = models.ImageField(upload_to='images',null=True)
+    img = models.ImageField(upload_to='images', null=True)
 
     def __str__(self):
         return self.product_name
@@ -92,6 +88,7 @@ class Order(models.Model):
             total += order_product.get_final_price()
         return total
 
+
 class CheckoutAddress(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     street_address = models.CharField(max_length=100)
@@ -101,6 +98,7 @@ class CheckoutAddress(models.Model):
 
     def __str__(self):
         return self.user.username
+
 
 class Payment(models.Model):
     stripe_id = models.CharField(max_length=50)
