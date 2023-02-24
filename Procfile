@@ -1,1 +1,1 @@
-web: gunicorn FP_Podbuddies.wsgi --log-file -
+web: gunicorn PODBUDDIEZ.wsgi --log-file -
